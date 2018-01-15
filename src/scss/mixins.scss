@@ -1,0 +1,66 @@
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+@mixin transition-default($property:"all", $duration:"0.2s", $delay:"0s", $timing:"ease-in-out", $imp:null) {
+    transition-delay: #{$delay}#{$imp};
+    transition-duration: #{$duration}#{$imp};
+    transition-property: #{$property}#{$imp};
+    transition-timing-function: #{$timing}#{$imp};
+
+    -webkit-transition-delay: #{$delay}#{$imp};
+    -webkit-transition-duration: #{$duration}#{$imp};
+    -webkit-transition-property: #{$property}#{$imp};
+    -webkit-transition-timing-function: #{$timing}#{$imp};
+
+    -moz-transition-delay: #{$delay}#{$imp};
+    -moz-transition-duration: #{$duration}#{$imp};
+    -moz-transition-property: #{$property}#{$imp};
+    -moz-transition-timing-function: #{$timing}#{$imp};
+
+    -o-transition-delay: #{$delay}#{$imp};
+    -o-transition-duration: #{$duration}#{$imp};
+    -o-transition-property: #{$property}#{$imp};
+    -o-transition-timing-function: #{$timing}#{$imp};
+
+    -ms-transition-delay: #{$delay}#{$imp};
+    -ms-transition-duration: #{$duration}#{$imp};
+    -ms-transition-property: #{$property}#{$imp};
+    -ms-transition-timing-function: #{$timing}#{$imp};
+}
+
+@mixin respond-to($media) {
+
+    @if $media == small {
+      @media only screen and (max-width: $sm-screen - 1) { @content; }
+    }
+    @else if $media == medium {
+      @media only screen and (min-width: $sm-screen + 1) and (max-width: $lg-screen - 1) { @content; }
+    }
+    @else if $media == large {
+      @media only screen and (min-width: $lg-screen) { @content; }
+    }
+}

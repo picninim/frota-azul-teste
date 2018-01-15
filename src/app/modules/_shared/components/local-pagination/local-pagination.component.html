@@ -1,0 +1,34 @@
+<div class="lp-table">
+  <div class="lp-header">
+    <div class="lp-cell" ng-if="tableConfig.selectable">
+      <div class="custom-check-container" (click)="toogleSelectAll()" *ngIf="data && data.length > 0">
+        <input type="checkbox" [ngModel]="isAllSelect()"/>
+        <div class="custom-check"></div>
+      </div>
+    </div>
+    <div class="lp-cell" *ngFor="let header of tableConfig.headers">
+      {{header}}
+    </div>
+  </div>
+  <div class="lp-body">
+    <div class="lp-row" *ngFor="let item of page" [class.active]="isSelected(item)">
+      <div class="lp-cell" ng-if="tableConfig.selectable">
+          <div class="custom-check-container" (click)="toogleSelect(item)">
+            <input type="checkbox" [ngModel]="isSelected(item)"/>
+            <div class="custom-check"></div>
+          </div>
+        </div>
+      <div class="lp-cell" *ngFor="let key of item | loopAsObject">
+          <app-lc-custom-view *ngIf="tableConfig.customViews[key]" [view]="tableConfig.customViews[key]" [data]="item[key]"></app-lc-custom-view>          
+          {{!tableConfig.customViews[key] ? item[key] : null}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lp-ruler">
+  <div class="btn-group" role="group" aria-label="Basic example" *ngIf="data && data.length > 0">
+      <button type="button" class="btn btn-light" (click)="jumpRuler(-1)"> << </button>
+      <button type="button" class="btn btn-light" [class.active]="onPage == item" *ngFor="let item of ruler" (click)="goToPage(item)">{{ item }}</button>
+      <button type="button" class="btn btn-light" (click)="jumpRuler(1)"> >> </button>
+  </div>
+</div>

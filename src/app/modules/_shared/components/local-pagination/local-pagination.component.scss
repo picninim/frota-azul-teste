@@ -1,0 +1,111 @@
+@import "~scss/mixins";
+
+$local-border-radius: 5px;
+
+$local-border-color: #c9d3de;
+
+%local-as-table {
+    display: table;
+    width: 100%;
+}
+
+%local-as-row {
+    display: table-row;
+}
+
+%local-as-cell {
+    display: table-cell;
+    padding: 10px;
+    border-bottom: 1px solid $local-border-color;
+}
+%local-as-group {
+    display: table-row-group;
+}
+
+%local-active {
+    border-color: #8ac8f6;
+    box-shadow: 0px -1px 0px 0px #8ac8f6;
+    background-color: #d8e9fb;
+    &:first-child {
+        box-shadow: -1px -1px 0px 0px #8ac8f6
+    }
+    &:last-child {
+        box-shadow: 1px -1px 0px 0px #8ac8f6;
+    }
+    .custom-check {
+        border-color: #8ac8f6;
+    }
+}
+
+
+:host {
+    display: block;
+    .lp-table {
+        @extend %local-as-table;
+        background-color: #FFF;
+        border-radius: $local-border-radius $local-border-radius 0 0;
+        border: 1px solid $local-border-color;
+        border-bottom: none;
+        color: #47749e;
+    }
+    .lp-header {
+        @extend %local-as-row;
+        background-color: #f8fafc;
+        font-weight: 400;
+        .lp-cell {
+            vertical-align: middle;
+            &:first-child {
+                border-radius: $local-border-radius 0 0 0;
+            }
+            &:last-child {
+                border-radius: 0 $local-border-radius 0 0;
+            }
+        }
+    }
+    .lp-row {
+        @extend %local-as-row;
+    }
+    .lp-cell {
+        @extend %local-as-cell;
+        @include transition-default;
+    }
+    .lp-body {
+        @extend %local-as-group;
+        .lp-row {
+            &.active {
+                .lp-cell {
+                    @extend  %local-active;
+                }
+            }
+            .lp-cell {
+                font-size: 1.1em;
+                padding: 14px 10px;
+                vertical-align: middle;
+            }
+        }
+
+    }
+    .lp-ruler {
+        text-align: center;
+        margin-top: 30px;
+        .btn {
+            font-weight: 300;
+            padding: 10px 17px;
+            color: #47749e;
+            border: 1px solid $local-border-color;
+            &:first-child, &:last-child  {
+                font-weight: bold;
+            }
+            &:hover {
+                background-color: #fffaeb;
+            }
+            &.active {
+                @extend %local-active;
+                box-shadow: none;
+                &:hover { 
+                    background-color: inherit;
+                }
+            }
+        }
+    }
+}

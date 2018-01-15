@@ -1,0 +1,42 @@
+@import "~scss/vars";
+@import "~scss/mixins";
+
+.fleet-controller {
+    padding: 20px 0;
+    .actions {
+        @include respond-to(small) {
+            width: 100%;
+            float: none;
+        }
+        float: left;
+        .btn {
+            margin-right: 25px;
+            @include respond-to(small) {
+                width: 49%;
+                margin-right: 0;
+                float: left;
+                &:last-child {
+                    float: right;
+                }
+            }
+        }
+    }
+    .search {
+        input {
+            font-size: 1em;
+        }
+        .svg-search {
+            width: 12px;
+            height: auto;
+            * {
+                fill: #416181;
+            }
+        }
+        float: right;
+        @include respond-to(small) {
+            width: 100%;
+            margin-top: 20px;
+            float: none;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* My own reset */
+@import "~scss/reset";
+
+/*Scss Basic Structure */
+@import "~scss/vars";
+@import "~scss/mixins";
+
+
+/* Atomic Desing Structure */
+@import "~scss/atoms/all";
+@import "~scss/atoms/buttons";
+
+@import "~scss/molecules/custom-check";
+
+/* Embeding Font for better loading Performance */
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-light/OpenSansLight', 100, normal, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-lightitalic/OpenSansLightItalic', 100, italic, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-light/OpenSansLight', 200, normal, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-lightitalic/OpenSansLightItalic', 200, italic, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-regular/OpenSansRegular', 300, normal, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-italic/OpenSansItalic', 300, italic, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-semibold/OpenSansSemibold', 400, normal, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-semibolditalic/OpenSansSemiBoldItalic', 400, italic, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-bold/OpenSansBold', 500, normal, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-bolditalic/OpenSansBoldItalic', 500, italic, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-extrabold/OpenSansExtraBold', 600, normal, eot woff ttf);
+@include font-face('Open Sans', '../assets/fonts/open-sans/opensans-extrabolditalic/OpenSansExtraBoldItalic', 600, italic, eot woff ttf);

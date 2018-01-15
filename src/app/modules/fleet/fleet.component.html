@@ -1,0 +1,19 @@
+<div>
+  <div class="container">
+    <div class="fleet-controller clearfix">
+      <div class="actions clearfix">
+        <button class="btn btn-success">Novo Carro</button>
+        <button class="btn btn-danger">Excluir Carro</button>
+      </div>
+      <div class="search">
+          <div class="input-group">
+              <input type="text" [(ngModel)]="searchBy" (ngModelChange)='filterVehicles()' class="form-control" placeholder="Pesquisar">
+              <span class="input-group-addon"><app-svg-icon icon="search"></app-svg-icon></span>
+            </div>
+      </div>
+    </div>
+    <div class="fleet-table">
+      <app-local-pagination [data]="filterdVehicles" [config]="tableConfig"></app-local-pagination>
+    </div>
+  </div>
+</div>

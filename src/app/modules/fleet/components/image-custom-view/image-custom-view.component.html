@@ -1,0 +1,5 @@
+<div *ngIf="data" class="image-container">
+  <div class="vehicle-image" [style.background-image]="'url('+data+')'"></div> 
+  <a href="{{data}}" target="_blank">Imagem</a>
+</div>
+{{ !data ? 'Sem Foto' : null}}

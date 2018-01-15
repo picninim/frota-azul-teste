@@ -1,0 +1,40 @@
+@import "~scss/vars";
+@import "~scss/mixins";
+
+body {
+    font-family: 'Open Sans', sans-serif; 
+    font-weight: 300;
+    background: #f1f4f9;
+    * {
+        font-size: 0.965em;
+    }
+}
+app-nav-bar {
+   &:not(.ng-animating) ~ .stage > * {
+        position: relative;
+        height: calc(100vh - #{$nav-bar-height});
+        width: 100%;
+        overflow: auto;
+        top: $nav-bar-height;
+        opacity: 1;
+        padding-bottom: 15px;
+        left: 0;
+        right: 0;
+    }
+    &.ng-animating ~ .stage > * {
+        opacity: 0;
+    }
+}
+.form-control {
+    padding: .6rem .75rem;
+    font-weight: 100;
+}
+.stage {
+    display: block;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    > * {
+        @include transition-default('opacity','0.4s');
+    }
+}

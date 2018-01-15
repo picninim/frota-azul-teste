@@ -1,0 +1,19 @@
+@import "~scss/vars.scss";
+@import "~scss/mixins.scss";
+
+app-svg-icon {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    @include transition-default;
+    .svg-icon-container {
+        height: 100%;
+        display: block;
+    }
+}
+// Logo
+.svg-logo{
+   fill: white;
+}
